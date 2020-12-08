@@ -1,11 +1,11 @@
-JFDML JFormDesigner: "7.0.3.0.337" Java: "11.0.8" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.3.0.337" Java: "11.0.9" encoding: "UTF-8"
 
 new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq {par t:::p {seq {space :p:36:p, par l {comp label4:::p::p, seq l {space :p:6:p, comp label3:::p::p}, comp label2:::p::p, comp label1::l:p::p}, space :p:55:p, par l {comp textField4::l:p:127:p, comp textField3::l:p:127:p, comp textField2::l:p:127:p, comp textField1::l:p:127:p}}, seq t {space :p:19:p, comp label5:::p::p, space :::x, comp textField5:::p:126:p}}, space ::22:x}, seq t {space ::110:x, comp botonConsultar_Actualizar:::p::p, space :p:108:p}, seq l {space :p:61:p, comp botonActualizar_Actualizar:::p::p, space :p:31:p, comp botonSalir_Actualizar:::p::p, space :0:47:x}}"
-			"$verticalGroup": "par l {seq l {space :p:20:p, par b {comp textField5::b:p::p, comp label5::b:p::p}, space :::p, comp botonConsultar_Actualizar:::p::p, space :::x, par b {comp label1::b:p::p, comp textField1::b:p::p}, space :p:18:p, par b {comp label2::b:p::p, comp textField2::b:p::p}, space :p:18:p, par b {comp label3::b:p::p, comp textField3::b:p::p}, space :p:18:p, par b {comp label4::b:p::p, comp textField4::b:p::p}, space :p:23:p, par b {comp botonActualizar_Actualizar::b:p::p, comp botonSalir_Actualizar::b:p::p}, space :p:47:p}}"
+			"$horizontalGroup": "par l {seq {space :p:36:p, par l {comp label4:::p::p, comp label2:::p::p, comp label1::l:p::p, comp label3:::p::p}, space :p:55:p, par t:::p {comp textField1::l::98:x, comp textField2::l::98:x, comp comboBox1::l::98:x, comp textField4::::98:x}, space ::26:x}, seq t {space ::85:x, comp botonConsultar_Actualizar:::p::p, space :p:108:p}, seq l {space :p:46:p, comp botonActualizar_Actualizar:::p::p, space :p:31:p, comp botonSalir_Actualizar:::p::p, space :0:37:x}, seq l {space :p:19:p, comp label5:::p::p, space ::18:x, comp textField5:::p:97:p, space ::38:x}}"
+			"$verticalGroup": "par l {seq l {space :p:20:p, par b {comp label5::b:p::p, comp textField5::b:p::p}, space :::p, comp botonConsultar_Actualizar:::p::p, space :::x, par b {comp label1::b:p::p, comp textField1::b:p::p}, space :p:18:p, par b {comp label2::b:p::p, comp textField2::b:p::p}, space :p:18:p, par b {comp label3::b:p::p, comp comboBox1::b:p::p}, space :p:18:p, par b {comp label4::b:p::p, comp textField4::b:p::p}, space :p:23:p, par b {comp botonActualizar_Actualizar::b:p::p, comp botonSalir_Actualizar::b:p::p}, space :p:47:p}}"
 		} ) {
 			name: "this"
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -41,9 +41,6 @@ new FormModel {
 				name: "textField2"
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "textField3"
-			} )
-			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "textField4"
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
@@ -58,9 +55,12 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "textField5"
 			} )
+			add( new FormComponent( "javax.swing.JComboBox" ) {
+				name: "comboBox1"
+			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 275, 60 )
-			"size": new java.awt.Dimension( 305, 380 )
+			"size": new java.awt.Dimension( 280, 380 )
 		} )
 	}
 }

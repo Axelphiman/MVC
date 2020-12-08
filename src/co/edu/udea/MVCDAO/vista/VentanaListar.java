@@ -9,8 +9,7 @@ import co.edu.udea.MVCDAO.dao.impl.EstudianteDAOFILE;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.GroupLayout;
-
+import javax.swing.table.*;
 /**
  * @author Diego Munoz
  */
@@ -28,6 +27,11 @@ public class VentanaListar extends JFrame {
         this.dispose();
     }
 
+    private void botonIngresarMouseClicked(MouseEvent e) {
+        // TODO add your code here
+    }
+
+
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -35,12 +39,16 @@ public class VentanaListar extends JFrame {
         scrollPane1 = new JScrollPane();
         textArea1 = new JTextArea();
         botonSalir_Listar = new JButton();
+        label1 = new JLabel();
 
         //======== this ========
         Container contentPane = getContentPane();
 
         //======== scrollPane1 ========
         {
+
+            //---- textArea1 ----
+            textArea1.setFont(new Font("JetBrains Mono", Font.PLAIN, 12));
             scrollPane1.setViewportView(textArea1);
         }
 
@@ -49,31 +57,41 @@ public class VentanaListar extends JFrame {
         botonSalir_Listar.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                botonIngresarMouseClicked(e);
                 botonSalir_ListarMouseClicked(e);
             }
         });
 
+        //---- label1 ----
+        label1.setText("Listar Estudiantes");
+
         GroupLayout contentPaneLayout = new GroupLayout(contentPane);
         contentPane.setLayout(contentPaneLayout);
         contentPaneLayout.setHorizontalGroup(
-                contentPaneLayout.createParallelGroup()
-                        .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
-                                .addContainerGap(15, Short.MAX_VALUE)
-                                .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 369, GroupLayout.PREFERRED_SIZE)
-                                .addGap(14, 14, 14))
-                        .addGroup(contentPaneLayout.createSequentialGroup()
-                                .addGap(158, 158, 158)
-                                .addComponent(botonSalir_Listar)
-                                .addContainerGap(162, Short.MAX_VALUE))
+            contentPaneLayout.createParallelGroup()
+                .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
+                    .addGap(0, 248, Short.MAX_VALUE)
+                    .addComponent(label1)
+                    .addGap(244, 244, 244))
+                .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
+                    .addContainerGap(257, Short.MAX_VALUE)
+                    .addComponent(botonSalir_Listar)
+                    .addGap(248, 248, 248))
+                .addGroup(contentPaneLayout.createSequentialGroup()
+                    .addGap(19, 19, 19)
+                    .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 542, GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(22, Short.MAX_VALUE))
         );
         contentPaneLayout.setVerticalGroup(
-                contentPaneLayout.createParallelGroup()
-                        .addGroup(contentPaneLayout.createSequentialGroup()
-                                .addGap(23, 23, 23)
-                                .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 225, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(botonSalir_Listar, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            contentPaneLayout.createParallelGroup()
+                .addGroup(contentPaneLayout.createSequentialGroup()
+                    .addGap(13, 13, 13)
+                    .addComponent(label1)
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 225, GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(botonSalir_Listar, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(13, Short.MAX_VALUE))
         );
         pack();
         setLocationRelativeTo(getOwner());
@@ -85,5 +103,6 @@ public class VentanaListar extends JFrame {
     private JScrollPane scrollPane1;
     private JTextArea textArea1;
     private JButton botonSalir_Listar;
+    private JLabel label1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

@@ -10,6 +10,7 @@ import javax.swing.*;
 
 import co.edu.udea.MVCDAO.dao.impl.EstudianteDAOFILE;
 import co.edu.udea.MVCDAO.modelo.EstudianteDTO;
+import co.edu.udea.MVCDAO.negocio.Validar;
 import com.intellij.uiDesigner.core.*;
 
 /**
@@ -25,20 +26,21 @@ public class VentanaIngresar extends JFrame {
     private void botonIngresar_ingresarMouseClicked(MouseEvent e) {
         String documento = textField4.getText();
         String nombre = textField1.getText();
-        String genero = textField3.getText();
-        if (nombre.equalsIgnoreCase("") || documento.equalsIgnoreCase("") || genero.equalsIgnoreCase("")) {
+        String apellido = textField2.getText();
+        String genero = (String) comboBox1.getSelectedItem();
+        if (!Validar.validarNombre(nombre) || !Validar.validarNombre(apellido) || !Validar.validarDocumento(documento)) {
             JOptionPane.showMessageDialog(this, "Datos incompletos");
         } else {
-            EstudianteDTO estudiante = new EstudianteDTO(nombre, textField2.getText(), genero.charAt(0), textField4.getText());
+            EstudianteDTO estudiante = new EstudianteDTO(Validar.rellenarDato(nombre), Validar.rellenarDato(apellido),
+                    Validar.rellenarDato(genero), Validar.rellenarDato(documento));
+
             accesoArchivo.almacenarEstudiante(estudiante);
             JOptionPane.showMessageDialog(this, "Guardado satisfactoriamente");
-            //this.dispose();
             textField1.setText("");
             textField2.setText("");
-            textField3.setText("");
             textField4.setText("");
-
         }
+
     }
 
     private void botonIngresarMouseClicked(MouseEvent e) {
@@ -51,17 +53,19 @@ public class VentanaIngresar extends JFrame {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - unknown
+        // Generated using JFormDesigner Evaluation license - Diego Munoz
         label1 = new JLabel();
         textField1 = new JTextField();
         label2 = new JLabel();
         textField2 = new JTextField();
         label3 = new JLabel();
-        textField3 = new JTextField();
         label4 = new JLabel();
         textField4 = new JTextField();
         botonIngresar_ingresar = new JButton();
         button1 = new JButton();
+        String [] opciones = {"Hombre","Mujer","Otro"};
+        comboBox1 = new JComboBox(opciones);
+        label5 = new JLabel();
 
         //======== this ========
         Container contentPane = getContentPane();
@@ -97,55 +101,65 @@ public class VentanaIngresar extends JFrame {
             }
         });
 
+        //---- label5 ----
+        label5.setText("Ingresar Estudiante");
+
         GroupLayout contentPaneLayout = new GroupLayout(contentPane);
         contentPane.setLayout(contentPaneLayout);
         contentPaneLayout.setHorizontalGroup(
-                contentPaneLayout.createParallelGroup()
+            contentPaneLayout.createParallelGroup()
+                .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
+                    .addContainerGap(67, Short.MAX_VALUE)
+                    .addComponent(botonIngresar_ingresar)
+                    .addGap(34, 34, 34)
+                    .addComponent(button1)
+                    .addGap(56, 56, 56))
+                .addGroup(contentPaneLayout.createSequentialGroup()
+                    .addGroup(contentPaneLayout.createParallelGroup()
                         .addGroup(contentPaneLayout.createSequentialGroup()
-                                .addGap(33, 33, 33)
-                                .addGroup(contentPaneLayout.createParallelGroup()
-                                        .addComponent(label2)
-                                        .addComponent(label1, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(label3)
-                                        .addComponent(label4))
-                                .addGap(59, 59, 59)
-                                .addGroup(contentPaneLayout.createParallelGroup()
-                                        .addComponent(textField2, GroupLayout.PREFERRED_SIZE, 201, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(textField1, GroupLayout.PREFERRED_SIZE, 201, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(textField3, GroupLayout.PREFERRED_SIZE, 201, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(textField4, GroupLayout.PREFERRED_SIZE, 201, GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(22, Short.MAX_VALUE))
-                        .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
-                                .addContainerGap(97, Short.MAX_VALUE)
-                                .addComponent(botonIngresar_ingresar)
-                                .addGap(35, 35, 35)
-                                .addComponent(button1)
-                                .addGap(90, 90, 90))
+                            .addGap(33, 33, 33)
+                            .addGroup(contentPaneLayout.createParallelGroup()
+                                .addComponent(label2)
+                                .addComponent(label1, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(label3)
+                                .addComponent(label4))
+                            .addGap(53, 53, 53)
+                            .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(comboBox1, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+                                .addComponent(textField2, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+                                .addComponent(textField1, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+                                .addComponent(textField4, GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)))
+                        .addGroup(contentPaneLayout.createSequentialGroup()
+                            .addGap(93, 93, 93)
+                            .addComponent(label5)))
+                    .addContainerGap(31, Short.MAX_VALUE))
         );
         contentPaneLayout.setVerticalGroup(
-                contentPaneLayout.createParallelGroup()
-                        .addGroup(contentPaneLayout.createSequentialGroup()
-                                .addGap(36, 36, 36)
-                                .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(textField1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(label1))
-                                .addGap(31, 31, 31)
-                                .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(textField2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(label2))
-                                .addGap(29, 29, 29)
-                                .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(textField3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(label3))
-                                .addGap(28, 28, 28)
-                                .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(textField4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(label4))
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                                .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(botonIngresar_ingresar, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(button1, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE))
-                                .addGap(17, 17, 17))
+            contentPaneLayout.createParallelGroup()
+                .addGroup(contentPaneLayout.createSequentialGroup()
+                    .addGap(10, 10, 10)
+                    .addComponent(label5)
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addComponent(label1)
+                        .addComponent(textField1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                    .addGap(31, 31, 31)
+                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addComponent(label2)
+                        .addComponent(textField2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                    .addGap(29, 29, 29)
+                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addComponent(label3)
+                        .addComponent(comboBox1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                    .addGap(28, 28, 28)
+                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addComponent(label4)
+                        .addComponent(textField4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                    .addGap(27, 27, 27)
+                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addComponent(button1, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botonIngresar_ingresar, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(19, Short.MAX_VALUE))
         );
         pack();
         setLocationRelativeTo(getOwner());
@@ -153,16 +167,17 @@ public class VentanaIngresar extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - unknown
+    // Generated using JFormDesigner Evaluation license - Diego Munoz
     private JLabel label1;
     private JTextField textField1;
     private JLabel label2;
     private JTextField textField2;
     private JLabel label3;
-    private JTextField textField3;
     private JLabel label4;
     private JTextField textField4;
     private JButton botonIngresar_ingresar;
     private JButton button1;
+    private JComboBox comboBox1;
+    private JLabel label5;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

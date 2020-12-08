@@ -3,10 +3,11 @@ package co.edu.udea.MVCDAO.modelo;
 public class EstudianteDTO {
     private String nombre;
     private String apellido;
-    private char genero;
+    private String genero;
     private String documento;
+    private static final String DELIMITADOR = "#";
 
-    public EstudianteDTO(String nombre, String apellido, char genero, String documento) {
+    public EstudianteDTO(String nombre, String apellido, String genero, String documento) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.genero = genero;
@@ -29,11 +30,11 @@ public class EstudianteDTO {
         this.apellido = apellido;
     }
 
-    public char getGenero() {
+    public String getGenero() {
         return genero;
     }
 
-    public void setGenero(char genero) {
+    public void setGenero(String genero) {
         this.genero = genero;
     }
 
@@ -48,6 +49,6 @@ public class EstudianteDTO {
     @Override
     public String toString() {
         return
-                nombre + "," + apellido + "," + genero + "," + documento + ",\n";
+                nombre + DELIMITADOR + apellido + DELIMITADOR + genero + DELIMITADOR + documento + DELIMITADOR+"\n";
     }
 }

@@ -1,11 +1,11 @@
-JFDML JFormDesigner: "7.0.3.0.337" Java: "11.0.8" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.3.0.337" Java: "11.0.9" encoding: "UTF-8"
 
 new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq l {space :p:33:p, par l {comp label2:::p::p, comp label1:::p:55:p, comp label3::l:p::p, comp label4:::p::p}, space :p:59:p, par l {comp textField2:::p:201:p, comp textField1:::p:201:p, comp textField3::l:p:201:p, comp textField4:::p:201:p}, space ::22:x}, seq t {space ::97:x, comp botonIngresar_ingresar:::p::p, space :p:35:p, comp button1:::p::p, space :p:90:p}}"
-			"$verticalGroup": "par l {seq {space :p:36:p, par b {comp textField1::b:p::p, comp label1::b:p::p}, space :p:31:p, par b {comp textField2::b:p::p, comp label2::b:p::p}, space :p:29:p, par b {comp textField3::b:p::p, comp label3::b:p::p}, space :p:28:p, par b {comp textField4::b:p::p, comp label4::b:p::p}, space ::30:x, par b {comp botonIngresar_ingresar::b:p:52:p, comp button1::b:p:52:p}, space :p:17:p}}"
+			"$horizontalGroup": "par l {seq t {space ::67:x, comp botonIngresar_ingresar:::p::p, space :p:34:p, comp button1:::p::p, space :p:56:p}, seq {par l {seq l {space :p:33:p, par l {comp label2:::p::p, comp label1:::p:55:p, comp label3::l:p::p, comp label4::l:p::p}, space :p:53:p, par t:::p {comp comboBox1::l::133:x, comp textField2::l::133:x, comp textField1::l::133:x, comp textField4::::133:x}}, seq l {space :p:93:p, comp label5:::p::p}}, space ::31:x}}"
+			"$verticalGroup": "par l {seq {space :p:10:p, comp label5:::p::p, space :::p, par b {comp label1::b:p::p, comp textField1::b:p::p}, space :p:31:p, par b {comp label2::b:p::p, comp textField2::b:p::p}, space :p:29:p, par b {comp label3::b:p::p, comp comboBox1::b:p::p}, space :p:28:p, par b {comp label4::b:p::p, comp textField4::b:p::p}, space :p:27:p, par b {comp button1::b:p:52:p, comp botonIngresar_ingresar::b:p:52:p}, space ::19:x}}"
 		} ) {
 			name: "this"
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -26,9 +26,6 @@ new FormModel {
 				name: "label3"
 				"text": "Genero"
 			} )
-			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "textField3"
-			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label4"
 				"text": "Documento"
@@ -47,9 +44,16 @@ new FormModel {
 				"text": "Salir"
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "button1MouseClicked", true ) )
 			} )
+			add( new FormComponent( "javax.swing.JComboBox" ) {
+				name: "comboBox1"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label5"
+				"text": "Ingresar Estudiante"
+			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 325, 45 )
-			"size": new java.awt.Dimension( 380, 375 )
+			"size": new java.awt.Dimension( 315, 370 )
 		} )
 	}
 }

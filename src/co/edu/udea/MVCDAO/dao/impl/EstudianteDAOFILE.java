@@ -5,33 +5,28 @@ import co.edu.udea.MVCDAO.modelo.EstudianteDTO;
 
 import java.io.*;
 
-
 public class EstudianteDAOFILE implements EstudianteDAO {
-    private static final String DELIMITADOR = ",";
+    private static final String DELIMITADOR = "#";
     private static final String ESTUDIANTEFILLENAME = "texto.txt";
-    private BufferedWriter escritorBuffer;
     private FileWriter escritorArchivo;
-    private FileReader lectorArchivo;
     private BufferedReader lectorBuffer;
-    private File archivoEstudiante;
 
     public EstudianteDAOFILE() {
     }
 
     public String listarEstudiante() {
-        String archivo = " ";
+        StringBuilder archivo = new StringBuilder();
         try {
             String lineaActual;
             lectorBuffer = new BufferedReader(new FileReader(ESTUDIANTEFILLENAME));
 
             while ((lineaActual = lectorBuffer.readLine()) != null) {
-                archivo = archivo + lineaActual + "\n";
+                archivo.append(lineaActual);
+                archivo.append("\n");
             }
             lectorBuffer.close();
-        } catch (IOException e) {
-            System.out.println(e);
-        }
-        return archivo;
+        } catch (IOException ignored) {}
+        return archivo.toString();
     }
 
     public String consultarEstudiante(String documento) {
@@ -41,60 +36,52 @@ public class EstudianteDAOFILE implements EstudianteDAO {
             String documentoActual;
             while ((lineaActual = lectorBuffer.readLine()) != null) {
                 documentoActual = lineaActual.split(DELIMITADOR)[3];
-                if (documentoActual.equalsIgnoreCase(documento)) {
+                if (documentoActual.trim().equalsIgnoreCase(documento)) {
                     return lineaActual;
                 }
             }
             lectorBuffer.close();
-        } catch (IOException e) {
-            System.out.println(e);
-        }
+        } catch (IOException ignored) { }
         return null;
     }
 
     public boolean almacenarEstudiante(EstudianteDTO estudiante) {
         boolean todoOk = true;
         try {
-
             escritorArchivo = new FileWriter(ESTUDIANTEFILLENAME, true);
-            escritorBuffer = new BufferedWriter(escritorArchivo);
+            BufferedWriter escritorBuffer = new BufferedWriter(escritorArchivo);
             escritorBuffer.write(estudiante.toString());
-
             escritorBuffer.close();
             escritorArchivo.close();
         } catch (IOException e) {
-            System.out.println(e.getMessage());
             todoOk = false;
         }
         return todoOk;
     }
 
     public boolean eliminarEstudiante(String documento) {
-        String archivo = "";
+        StringBuilder archivo = new StringBuilder();
         boolean flag = false;
         try {
             String lineaActual;
             lectorBuffer = new BufferedReader(new FileReader(ESTUDIANTEFILLENAME));
             String documentoActual;
             while ((lineaActual = lectorBuffer.readLine()) != null) {
-                documentoActual = lineaActual.split(DELIMITADOR)[3];
-                if (documentoActual.equalsIgnoreCase(documento)) {
+                documentoActual = lineaActual.split(DELIMITADOR)[3].trim();
+                if (documentoActual.equalsIgnoreCase(documento.trim())) {
                     flag = true;
                     continue;
                 }
-                archivo += lineaActual + "\n";
+                archivo.append(lineaActual);
             }
 
-
             new File(ESTUDIANTEFILLENAME).delete();
-            archivoEstudiante = new File(ESTUDIANTEFILLENAME);
+            File archivoEstudiante = new File(ESTUDIANTEFILLENAME);
             escritorArchivo = new FileWriter(archivoEstudiante);
-            escritorArchivo.write(archivo);
+            escritorArchivo.write(archivo.toString());
             escritorArchivo.close();
             lectorBuffer.close();
-        } catch (IOException e) {
-            System.out.println(e);
-        }
+        } catch (IOException ignored) { }
         return flag;
     }
 }

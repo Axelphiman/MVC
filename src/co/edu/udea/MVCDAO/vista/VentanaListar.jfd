@@ -1,17 +1,18 @@
-JFDML JFormDesigner: "7.0.3.0.337" Java: "11.0.8" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.3.0.337" Java: "11.0.9" encoding: "UTF-8"
 
 new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq t {space ::15:x, comp scrollPane1:::p:369:p, space :p:14:p}, seq l {space :p:158:p, comp botonSalir_Listar:::p::p, space ::162:x}}"
-			"$verticalGroup": "par l {seq l {space :p:23:p, comp scrollPane1:::p:225:p, space u:::p, comp botonSalir_Listar:::p:52:p, space :::x}}"
+			"$horizontalGroup": "par l {seq t {space :0:248:x, comp label1:::p::p, space :p:244:p}, seq t {space ::257:x, comp botonSalir_Listar:::p::p, space :p:248:p}, seq l {space :p:19:p, comp scrollPane1:::p:542:p, space ::22:x}}"
+			"$verticalGroup": "par l {seq l {space :p:13:p, comp label1:::p::p, space u:::p, comp scrollPane1:::p:225:p, space u:::p, comp botonSalir_Listar:::p:52:p, space ::13:x}}"
 		} ) {
 			name: "this"
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "scrollPane1"
 				add( new FormComponent( "javax.swing.JTextArea" ) {
 					name: "textArea1"
+					"font": new java.awt.Font( "JetBrains Mono", 0, 12 )
 				} )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
@@ -20,9 +21,13 @@ new FormModel {
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "botonIngresarMouseClicked", true ) )
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "botonSalir_ListarMouseClicked", true ) )
 			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "Listar Estudiantes"
+			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 400, 350 )
+			"location": new java.awt.Point( 160, 35 )
+			"size": new java.awt.Dimension( 585, 375 )
 		} )
 	}
 }

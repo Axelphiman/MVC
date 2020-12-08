@@ -1,0 +1,47 @@
+JFDML JFormDesigner: "7.0.3.0.337" Java: "11.0.8" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq l {space :p:43:p, par l:::p {comp botonIngresar::l:p::p, comp botonConsultar:::::x, comp botonEliminar::l:::x}, space :p:39:p, par l:::p {comp botonListar::l:p::p, comp botonActualizar::l:::x, comp botonSalir::l:::x}, space ::25:x}}"
+			"$verticalGroup": "par l {seq {space :p:35:p, par l:::p {comp botonIngresar::::52:x, comp botonListar::::52:x}, space :p:37:p, par b {comp botonConsultar::b:p:52:p, comp botonActualizar::b:p:52:p}, space :p:41:p, par l {comp botonSalir::::52:x, comp botonEliminar::::52:x}, space :p:39:p}}"
+		} ) {
+			name: "this"
+			"resizable": false
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "botonIngresar"
+				"text": "Ingresar"
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "botonIngresarMouseClicked", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "botonListar"
+				"text": "Listar"
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "botonListarMouseClicked", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "botonConsultar"
+				"text": "Consultar"
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "botonConsultarMouseClicked", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "botonEliminar"
+				"text": "Eliminar"
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "botonEliminarMouseClicked", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "botonActualizar"
+				"text": "Actualizar"
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "botonActualizarMouseClicked", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "botonSalir"
+				"text": "Salir"
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "botonSalirMouseClicked", true ) )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 245, 80 )
+			"size": new java.awt.Dimension( 280, 340 )
+		} )
+	}
+}

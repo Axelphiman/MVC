@@ -14,18 +14,18 @@ import javax.swing.GroupLayout;
  */
 public class VentanaListar extends JFrame {
     EstudianteDAOFILE accesoArchivo = new EstudianteDAOFILE();
-    public VentanaListar() { initComponents();
+
+    public VentanaListar() {
+        initComponents();
         textArea1.setText(accesoArchivo.listarEstudiante());
         textArea1.setEditable(false);
     }
 
     private void botonSalir_ListarMouseClicked(MouseEvent e) {
         textArea1.setText("");
-       this.dispose();
+        this.dispose();
     }
 
-
-   
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -54,24 +54,24 @@ public class VentanaListar extends JFrame {
         GroupLayout contentPaneLayout = new GroupLayout(contentPane);
         contentPane.setLayout(contentPaneLayout);
         contentPaneLayout.setHorizontalGroup(
-            contentPaneLayout.createParallelGroup()
-                .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
-                    .addContainerGap(15, Short.MAX_VALUE)
-                    .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 369, GroupLayout.PREFERRED_SIZE)
-                    .addGap(14, 14, 14))
-                .addGroup(contentPaneLayout.createSequentialGroup()
-                    .addGap(158, 158, 158)
-                    .addComponent(botonSalir_Listar)
-                    .addContainerGap(162, Short.MAX_VALUE))
+                contentPaneLayout.createParallelGroup()
+                        .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
+                                .addContainerGap(15, Short.MAX_VALUE)
+                                .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 369, GroupLayout.PREFERRED_SIZE)
+                                .addGap(14, 14, 14))
+                        .addGroup(contentPaneLayout.createSequentialGroup()
+                                .addGap(158, 158, 158)
+                                .addComponent(botonSalir_Listar)
+                                .addContainerGap(162, Short.MAX_VALUE))
         );
         contentPaneLayout.setVerticalGroup(
-            contentPaneLayout.createParallelGroup()
-                .addGroup(contentPaneLayout.createSequentialGroup()
-                    .addGap(23, 23, 23)
-                    .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 225, GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(botonSalir_Listar, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                contentPaneLayout.createParallelGroup()
+                        .addGroup(contentPaneLayout.createSequentialGroup()
+                                .addGap(23, 23, 23)
+                                .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 225, GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(botonSalir_Listar, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pack();
         setLocationRelativeTo(getOwner());

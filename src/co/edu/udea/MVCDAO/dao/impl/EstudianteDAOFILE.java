@@ -1,4 +1,5 @@
 package co.edu.udea.MVCDAO.dao.impl;
+
 import co.edu.udea.MVCDAO.dao.EstudianteDAO;
 import co.edu.udea.MVCDAO.modelo.EstudianteDTO;
 
@@ -14,47 +15,46 @@ public class EstudianteDAOFILE implements EstudianteDAO {
     private BufferedReader lectorBuffer;
     private File archivoEstudiante;
 
-    public EstudianteDAOFILE(){
+    public EstudianteDAOFILE() {
     }
 
-    public String listarEstudiante(){
-        String archivo= " ";
+    public String listarEstudiante() {
+        String archivo = " ";
         try {
             String lineaActual;
-            lectorBuffer = new BufferedReader(new FileReader( ESTUDIANTEFILLENAME));
+            lectorBuffer = new BufferedReader(new FileReader(ESTUDIANTEFILLENAME));
 
             while ((lineaActual = lectorBuffer.readLine()) != null) {
-                archivo = archivo+lineaActual+ "\n";
+                archivo = archivo + lineaActual + "\n";
             }
             lectorBuffer.close();
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             System.out.println(e);
         }
         return archivo;
     }
 
-    public String consultarEstudiante(String documento){
+    public String consultarEstudiante(String documento) {
         try {
             String lineaActual;
-            lectorBuffer = new BufferedReader(new FileReader( ESTUDIANTEFILLENAME));
+            lectorBuffer = new BufferedReader(new FileReader(ESTUDIANTEFILLENAME));
             String documentoActual;
             while ((lineaActual = lectorBuffer.readLine()) != null) {
                 documentoActual = lineaActual.split(DELIMITADOR)[3];
-                if(documentoActual.equalsIgnoreCase(documento)){
+                if (documentoActual.equalsIgnoreCase(documento)) {
                     return lineaActual;
                 }
             }
             lectorBuffer.close();
-        }catch (IOException e){
+        } catch (IOException e) {
             System.out.println(e);
         }
         return null;
     }
 
-    public boolean almacenarEstudiante(EstudianteDTO estudiante){
+    public boolean almacenarEstudiante(EstudianteDTO estudiante) {
         boolean todoOk = true;
-        try{
+        try {
 
             escritorArchivo = new FileWriter(ESTUDIANTEFILLENAME, true);
             escritorBuffer = new BufferedWriter(escritorArchivo);
@@ -62,27 +62,27 @@ public class EstudianteDAOFILE implements EstudianteDAO {
 
             escritorBuffer.close();
             escritorArchivo.close();
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             System.out.println(e.getMessage());
             todoOk = false;
         }
         return todoOk;
     }
-    public boolean eliminarEstudiante(String documento){
+
+    public boolean eliminarEstudiante(String documento) {
         String archivo = "";
         boolean flag = false;
         try {
             String lineaActual;
-            lectorBuffer = new BufferedReader(new FileReader( ESTUDIANTEFILLENAME));
+            lectorBuffer = new BufferedReader(new FileReader(ESTUDIANTEFILLENAME));
             String documentoActual;
             while ((lineaActual = lectorBuffer.readLine()) != null) {
                 documentoActual = lineaActual.split(DELIMITADOR)[3];
-                if(documentoActual.equalsIgnoreCase(documento)){
+                if (documentoActual.equalsIgnoreCase(documento)) {
                     flag = true;
                     continue;
                 }
-                archivo += lineaActual+"\n";
+                archivo += lineaActual + "\n";
             }
 
 
@@ -92,7 +92,7 @@ public class EstudianteDAOFILE implements EstudianteDAO {
             escritorArchivo.write(archivo);
             escritorArchivo.close();
             lectorBuffer.close();
-        }catch (IOException e){
+        } catch (IOException e) {
             System.out.println(e);
         }
         return flag;

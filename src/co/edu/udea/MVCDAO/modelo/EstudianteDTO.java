@@ -48,6 +48,6 @@ public class EstudianteDTO {
     @Override
     public String toString() {
         return
-                nombre + "," + apellido +"," + genero+ "," + documento + ",\n";
+                nombre + "," + apellido + "," + genero + "," + documento + ",\n";
     }
 }

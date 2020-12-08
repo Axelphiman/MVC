@@ -1,4 +1,4 @@
-package co.edu.udea.MVCDAO.dao.impl;
+package co.edu.udea.MVCDAO.vista;
 
 public class EstudianteVista {
     public static void main(String[] Args) {

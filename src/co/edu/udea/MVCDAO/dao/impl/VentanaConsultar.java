@@ -22,6 +22,7 @@ public class VentanaConsultar extends JFrame {
         String estudianteConsultado = accesoArchivo.consultarEstudiante(textField1.getText());
         if(estudianteConsultado != null){
             textArea1.setText(estudianteConsultado);
+            textArea1.setEditable(false);
         }else{
             JOptionPane.showMessageDialog(this,"No se encontro el estudiante");
         }

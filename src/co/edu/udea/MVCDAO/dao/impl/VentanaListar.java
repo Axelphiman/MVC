@@ -16,6 +16,7 @@ public class VentanaListar extends JFrame {
     EstudianteDAOFILE accesoArchivo = new EstudianteDAOFILE();
     public VentanaListar() { initComponents();
         textArea1.setText(accesoArchivo.listarEstudiante());
+        textArea1.setEditable(false);
     }
 
     private void botonSalir_ListarMouseClicked(MouseEvent e) {

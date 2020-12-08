@@ -3,75 +3,65 @@ import co.edu.udea.MVCDAO.dao.EstudianteDAO;
 import co.edu.udea.MVCDAO.modelo.EstudianteDTO;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+
 
 public class EstudianteDAOFILE implements EstudianteDAO {
     private static final String DELIMITADOR = ",";
     private static final String ESTUDIANTEFILLENAME = "texto.txt";
-    private BufferedWriter escritoBuffer;
+    private BufferedWriter escritorBuffer;
     private FileWriter escritorArchivo;
-    private Scanner lector;
+    private FileReader lectorArchivo;
+    private BufferedReader lectorBuffer;
     private File archivoEstudiante;
 
     public EstudianteDAOFILE(){
-
     }
 
     public String listarEstudiante(){
-        String completo= " ";
+        String archivo= " ";
         try {
-            String linea;
-            BufferedReader fr = new BufferedReader(new FileReader( "texto.txt"));
+            String lineaActual;
+            lectorBuffer = new BufferedReader(new FileReader( ESTUDIANTEFILLENAME));
 
-            while ((linea = fr.readLine()) != null) {
-                completo = completo+linea+ "\n";
+            while ((lineaActual = lectorBuffer.readLine()) != null) {
+                archivo = archivo+lineaActual+ "\n";
             }
-            fr.close();
+            lectorBuffer.close();
         }
         catch (IOException e){
             System.out.println(e);
         }
-        return completo;
-    }// mostrar todos los estudiantes
+        return archivo;
+    }
 
     public String consultarEstudiante(String documento){
         try {
-            String linea;
-            BufferedReader fr = new BufferedReader(new FileReader( "texto.txt"));
+            String lineaActual;
+            lectorBuffer = new BufferedReader(new FileReader( ESTUDIANTEFILLENAME));
             String documentoActual;
-            while ((linea = fr.readLine()) != null) {
-                documentoActual = linea.split(",")[3];
+            while ((lineaActual = lectorBuffer.readLine()) != null) {
+                documentoActual = lineaActual.split(DELIMITADOR)[3];
                 if(documentoActual.equalsIgnoreCase(documento)){
-                    return linea;
+                    return lineaActual;
                 }
             }
-
-        }catch (IOException e){ }
+            lectorBuffer.close();
+        }catch (IOException e){
+            System.out.println(e);
+        }
         return null;
-    } //solo por documento
+    }
 
     public boolean almacenarEstudiante(EstudianteDTO estudiante){
         boolean todoOk = true;
-        try(
-                FileWriter fw = new FileWriter("texto.txt", true);
-                FileReader fr = new FileReader("texto.txt");
-                BufferedReader br = new BufferedReader(fr);
-                BufferedWriter bw = new BufferedWriter(fw)
-        ){
+        try{
 
-            bw.write(estudiante.toString());
-            bw.flush();
-            String linea;
-            String newLine = "\n";
+            escritorArchivo = new FileWriter(ESTUDIANTEFILLENAME, true);
+            escritorBuffer = new BufferedWriter(escritorArchivo);
+            escritorBuffer.write(estudiante.toString());
 
-            while( (linea = br.readLine())!= null){
-            }
-            bw.close();
-            fr.close();
-            br.close();
-            fw.close();
+            escritorBuffer.close();
+            escritorArchivo.close();
         }
         catch (IOException e){
             System.out.println(e.getMessage());
@@ -79,45 +69,32 @@ public class EstudianteDAOFILE implements EstudianteDAO {
         }
         return todoOk;
     }
-
     public boolean eliminarEstudiante(String documento){
-        String texto = "";
+        String archivo = "";
         boolean flag = false;
         try {
-            String linea;
-
-            BufferedReader fr = new BufferedReader(new FileReader( "texto.txt"));
+            String lineaActual;
+            lectorBuffer = new BufferedReader(new FileReader( ESTUDIANTEFILLENAME));
             String documentoActual;
-            while ((linea = fr.readLine()) != null) {
-                documentoActual = linea.split(",")[3];
+            while ((lineaActual = lectorBuffer.readLine()) != null) {
+                documentoActual = lineaActual.split(DELIMITADOR)[3];
                 if(documentoActual.equalsIgnoreCase(documento)){
                     flag = true;
                     continue;
                 }
-                texto += linea;
+                archivo += lineaActual+"\n";
             }
-            fr.close();
-            new File(ESTUDIANTEFILLENAME).delete();
-            File archivo = new File(ESTUDIANTEFILLENAME);
-            FileWriter writer = new FileWriter(archivo);
-            writer.write(texto);
-            writer.close();
 
-        }catch (IOException e){ }
+
+            new File(ESTUDIANTEFILLENAME).delete();
+            archivoEstudiante = new File(ESTUDIANTEFILLENAME);
+            escritorArchivo = new FileWriter(archivoEstudiante);
+            escritorArchivo.write(archivo);
+            escritorArchivo.close();
+            lectorBuffer.close();
+        }catch (IOException e){
+            System.out.println(e);
+        }
         return flag;
     }
-
-
-    public boolean actualiceEstudiante(String documento){
-        if( !consultarEstudiante(documento).equals(null)){
-
-
-        }
-        else{
-
-        }
-        return false;
-    } // aun no se que parametro recibir, problema para mañana
-
-
 }

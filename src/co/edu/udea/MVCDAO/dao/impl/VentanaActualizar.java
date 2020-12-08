@@ -10,7 +10,6 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.GroupLayout;
-
 /**
  * @author Diego Munoz
  */
@@ -43,6 +42,7 @@ public class VentanaActualizar extends JFrame {
             textField5.setEditable(true);
             accesoArchivo.almacenarEstudiante(new EstudianteDTO(textField1.getText(),textField2.getText(),
                     textField3.getText().charAt(0),textField4.getText()));
+
             textField1.setText("");
             textField2.setText("");
             textField3.setText("");

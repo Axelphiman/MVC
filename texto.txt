@@ -1,1 +1,6 @@
-victorio,asdasdhey,h,123,
+m,m,m,m,
+n,n,n,n,
+k,k,k,k,
+jaime,jaime,j,jaime,
+silvia,lopez,f,10000,
+gilberto,lopez,m,12,

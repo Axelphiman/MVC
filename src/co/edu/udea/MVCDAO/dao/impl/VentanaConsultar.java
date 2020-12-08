@@ -14,16 +14,18 @@ import javax.swing.GroupLayout;
  */
 public class VentanaConsultar extends JFrame {
     EstudianteDAOFILE accesoArchivo = new EstudianteDAOFILE();
+
     public VentanaConsultar() {
         initComponents();
     }
 
     private void botonConsultar_ConsultarMouseClicked(MouseEvent e) {
         String estudianteConsultado = accesoArchivo.consultarEstudiante(textField1.getText());
-        if(estudianteConsultado != null){
+        if (estudianteConsultado != null) {
             textArea1.setText(estudianteConsultado);
-        }else{
-            JOptionPane.showMessageDialog(this,"No se encontro el estudiante");
+            textArea1.setEditable(false);
+        } else {
+            JOptionPane.showMessageDialog(this, "No se encontro el estudiante");
         }
 
     }
@@ -74,37 +76,37 @@ public class VentanaConsultar extends JFrame {
         GroupLayout contentPaneLayout = new GroupLayout(contentPane);
         contentPane.setLayout(contentPaneLayout);
         contentPaneLayout.setHorizontalGroup(
-            contentPaneLayout.createParallelGroup()
-                .addGroup(contentPaneLayout.createSequentialGroup()
-                    .addGroup(contentPaneLayout.createParallelGroup()
+                contentPaneLayout.createParallelGroup()
                         .addGroup(contentPaneLayout.createSequentialGroup()
-                            .addGap(22, 22, 22)
-                            .addGroup(contentPaneLayout.createParallelGroup()
-                                .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 348, GroupLayout.PREFERRED_SIZE)
-                                .addGroup(contentPaneLayout.createSequentialGroup()
-                                    .addComponent(label1)
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(textField1, GroupLayout.PREFERRED_SIZE, 131, GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(botonConsultar_Consultar))))
-                        .addGroup(contentPaneLayout.createSequentialGroup()
-                            .addGap(143, 143, 143)
-                            .addComponent(botonSalir_Consultar)))
-                    .addContainerGap(14, Short.MAX_VALUE))
+                                .addGroup(contentPaneLayout.createParallelGroup()
+                                        .addGroup(contentPaneLayout.createSequentialGroup()
+                                                .addGap(22, 22, 22)
+                                                .addGroup(contentPaneLayout.createParallelGroup()
+                                                        .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 348, GroupLayout.PREFERRED_SIZE)
+                                                        .addGroup(contentPaneLayout.createSequentialGroup()
+                                                                .addComponent(label1)
+                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addComponent(textField1, GroupLayout.PREFERRED_SIZE, 131, GroupLayout.PREFERRED_SIZE)
+                                                                .addGap(18, 18, 18)
+                                                                .addComponent(botonConsultar_Consultar))))
+                                        .addGroup(contentPaneLayout.createSequentialGroup()
+                                                .addGap(143, 143, 143)
+                                                .addComponent(botonSalir_Consultar)))
+                                .addContainerGap(14, Short.MAX_VALUE))
         );
         contentPaneLayout.setVerticalGroup(
-            contentPaneLayout.createParallelGroup()
-                .addGroup(contentPaneLayout.createSequentialGroup()
-                    .addGap(26, 26, 26)
-                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                        .addComponent(label1)
-                        .addComponent(textField1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(botonConsultar_Consultar))
-                    .addGap(18, 18, 18)
-                    .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 184, GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(botonSalir_Consultar)
-                    .addContainerGap(8, Short.MAX_VALUE))
+                contentPaneLayout.createParallelGroup()
+                        .addGroup(contentPaneLayout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(label1)
+                                        .addComponent(textField1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(botonConsultar_Consultar))
+                                .addGap(18, 18, 18)
+                                .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 184, GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(botonSalir_Consultar)
+                                .addContainerGap(8, Short.MAX_VALUE))
         );
         pack();
         setLocationRelativeTo(getOwner());

@@ -57,9 +57,15 @@ public class VentanaPrincipal extends JFrame {
         label1 = new JLabel();
 
         //======== this ========
-        setResizable(false);
-        Container contentPane = getContentPane();
 
+        //---- botonConsultar ----
+        botonConsultar.setText("Consultar");
+        botonConsultar.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                botonConsultarMouseClicked(e);
+            }
+        });
         //---- botonIngresar ----
         botonIngresar.setText("Ingresar");
         botonIngresar.addMouseListener(new MouseAdapter() {
@@ -78,14 +84,7 @@ public class VentanaPrincipal extends JFrame {
             }
         });
 
-        //---- botonConsultar ----
-        botonConsultar.setText("Consultar");
-        botonConsultar.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                botonConsultarMouseClicked(e);
-            }
-        });
+
 
         //---- botonEliminar ----
         botonEliminar.setText("Eliminar");
@@ -113,7 +112,8 @@ public class VentanaPrincipal extends JFrame {
                 botonSalirMouseClicked(e);
             }
         });
-
+        setResizable(false);
+        Container contentPane = getContentPane();
         //---- label1 ----
         label1.setText("Gesti\u00f3n de Estudiantes");
         label1.setHorizontalAlignment(SwingConstants.CENTER);

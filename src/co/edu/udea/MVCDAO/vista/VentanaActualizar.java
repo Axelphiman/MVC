@@ -40,8 +40,11 @@ public class VentanaActualizar extends JFrame {
         } else {
             accesoArchivo.eliminarEstudiante(textField5.getText().trim());
             textField5.setEditable(true);
-            accesoArchivo.almacenarEstudiante(new EstudianteDTO(textField1.getText(), textField2.getText(),
-                    (String) comboBox1.getSelectedItem(), textField4.getText()));
+            String nombre = Validar.rellenarDato(textField1.getText());
+            String apellido = Validar.rellenarDato(textField2.getText());
+            String genero = Validar.rellenarDato( (String)comboBox1.getSelectedItem());
+            String documento = Validar.rellenarDato(textField4.getText());
+            accesoArchivo.almacenarEstudiante(new EstudianteDTO(nombre, apellido, genero, documento));
 
             textField1.setText("");
             textField2.setText("");

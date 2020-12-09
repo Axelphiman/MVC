@@ -73,6 +73,7 @@ public class EstudianteDAOFILE implements EstudianteDAO {
                     continue;
                 }
                 archivo.append(lineaActual);
+                archivo.append("\n");
             }
 
             new File(ESTUDIANTEFILLENAME).delete();
